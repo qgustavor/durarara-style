@@ -199,10 +199,10 @@ var romaji2katakana = (function() {
     border-right: none;
   }
   .message_read { animation: none; }
-  .message_read .content { animation: durarara-new-message 0.8s ease 1; transform-origin: 0 50% }
+  .message_read .content { animation: durarara-new-message 0.4s ease-in 1; transform-origin: 0 50% }
   @keyframes durarara-new-message{
-    0%   { scale: 0.8; }
-    100% { scale: 1; }
+    0%   { transform: scale(0.6); }
+    100% { transform: scale(1) }
   }
   .carregar-mensagens{
     background: black;
