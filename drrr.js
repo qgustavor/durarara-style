@@ -1,6 +1,6 @@
 var romaji2katakana = (function() {
   // based in http://d.hatena.ne.jp/mohayonao/20091129/1259505966
-  var master = {
+  var romaji_dict = {
     'a':  'ア', 'i':  'イ', 'u':  'ウ', 'e':  'エ', 'o':  'オ',
     'ka': 'カ', 'ki': 'キ', 'ku': 'ク', 'ke': 'ケ', 'ko': 'コ',
     'sa': 'サ', 'shi':'シ', 'su': 'ス', 'se': 'セ', 'so': 'ソ',
@@ -66,11 +66,6 @@ var romaji2katakana = (function() {
     'k':'ク', 'l':'ル', 'm':'ム', 'p':'プ'  , 'q':'ク', 'r':'ル', 's':'ス',
     't':'ト', 'v':'ヴ', 'w':'ゥ', 'x':'クス', 'y':'ィ', 'z':'ズ'
   };
-  
-  var romaji_dict = {};
-  Object.keys(master).forEach(key => {
-    romaji_dict[key] = master[key];
-  });
   
   var romaji_keys = Object.keys(romaji_dict);
   romaji_keys.sort((a, b) => b.length - a.length);
