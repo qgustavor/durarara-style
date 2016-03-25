@@ -77,12 +77,13 @@ var romaji2katakana = (function() {
   var rx_b__ = /^ッ/;
   
   function romaji2katakana(text) {
-    result = text.toLowerCase()
-    result = result.replace(rx_mba, 'ン$1$2');
-    result = result.replace(rx_xtu, 'ッ$1');
-    result = result.replace(rx_a__, '$1ー');
-    result = result.replace(rx_b__, '');
-    return result.replace(re_roma2kana, a => romaji_dict[a]);
+    return text
+      .toLowerCase()
+      .replace(rx_mba, 'ン$1$2')
+      .replace(rx_xtu, 'ッ$1')
+      .replace(rx_a__, '$1ー')
+      .replace(rx_b__, '')
+      .replace(re_roma2kana, a => romaji_dict[a]);
   }
   
   return romaji2katakana;
