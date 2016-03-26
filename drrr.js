@@ -152,6 +152,14 @@ var romaji2katakana = (function() {
     border: 2px solid white;
     border-radius: 0.5em;
     padding: 0.5em;
+    overflow: hidden;
+  }
+  @media screen and (max-width: 480px) {
+    .message .timestamp {
+      position: absolute;
+      right: 0;
+      opacity: 0.5;
+    }
   }
   .message:not(.message_me-command)::before {
     content: "";
@@ -214,6 +222,20 @@ var romaji2katakana = (function() {
   @keyframes durarara-new-message{
     0%   { transform: scale(0.6); }
     100% { transform: scale(1) }
+  }
+  .emoticon-bubble {
+    top: auto;
+    bottom: -15px;
+  }
+  .emoticon-bubble::before {
+    top: -15px;
+    bottom: auto;
+    border-width: 0 15px 14px;
+  }
+  .emoticon-bubble::after {
+    bottom: auto;
+    top: -14px;
+    border-width: 0 15px 14px;
   }
   .carregar-mensagens{
     background: black;
