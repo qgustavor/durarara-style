@@ -150,6 +150,7 @@ var romaji2katakana = (function() {
   }
   .message-controls {
     background: black;
+    padding: 5px;
   }
   .message-controls a, a {
     color: white;
