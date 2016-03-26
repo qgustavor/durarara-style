@@ -112,7 +112,6 @@ var romaji2katakana = (function() {
   }
   .message .avatar a {
     border-radius: 10px;
-    background: red linear-gradient(0deg, transparent, rgba(255,255,255,0.8));
     border: 2px solid white;
   }
   .avatar a img {
@@ -130,6 +129,24 @@ var romaji2katakana = (function() {
   .username a{
     color: white;
     font-size: 0.8em;
+  }
+  .message::after {
+    content: attr(data-user);
+    position: absolute;
+    top: 44px;
+    left: 0.4em;
+    overflow: hidden;
+    height: 1.5em;
+    text-align: center;
+    width: 7.5em;
+    color: white;
+    font-size: 0.7em;
+    background: black;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .message:hover::after {
+    opacity: 1;
   }
   .message:not(.message_me-command) > .content {
     border: 2px solid white;
@@ -152,7 +169,7 @@ var romaji2katakana = (function() {
     background: black;
     padding: 5px;
   }
-  .message-controls a, a {
+  .message-controls a, .message-container a {
     color: white;
   }
   .message .timestamp > .glyphicon {
@@ -170,9 +187,6 @@ var romaji2katakana = (function() {
   }
   .message_me-command .username a {
     font-size: 1em;
-  }
-  .message_me-command .content {
-    background: none!important;
   }
   .lightbox {
     background: rgba(0, 0, 0, 0.8);
@@ -221,10 +235,11 @@ var romaji2katakana = (function() {
       
       $this.prevAll('.avatar')
       .children('a')
-      .css('background', 'url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Ctext%20' + 'x=%2250%25%22%20y=%2280%25%22%20alignment-baseline=%22middle%22%20text-anchor=%22middle%22%20style=%22fill:' +
-      'white;font-size:30px%22%3E' + katakanaName.charAt(0) + '%3C/text%3E%3C/svg%3E"), ' + gradient);
+      .css('background', 'url("data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" style="fill:white;font-size:30px" dominant-baseline="central" text-anchor="middle">' + katakanaName.charAt(0) + '</text></svg>') + '"), ' + gradient);
       
-      $this.next().css('background', gradient);
+      if (!$this.parent().hasClass('message_me-command')) {
+        $this.next().css('background', gradient);
+      }
     });
   }
 
