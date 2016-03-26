@@ -226,8 +226,9 @@ var romaji2katakana = (function() {
     $('.username a').not('.durarara').each(function() {
       var $this = $(this);
       var katakanaName = romaji2katakana($this.text());
+      var hue = Math.abs(adler32(katakanaName)) % 640;
       var gradient = 'linear-gradient(0deg, hsla(0, 0%, 0%, 0.1), hsla(0, 0%, 0%, 0.2) 50%, hsla(0, 0%, 100%, 0.2) 50%, hsla(0, 0%, 100%, 0.1)), hsla(' +
-        (adler32(katakanaName) % 360) + ', 100%, 50%, 0.8)';
+        ((hue % 320 + 80) % 360) + ', ' + (hue > 320 ? 100 : 75) + '%, 50%, 0.8)';
       
       $this = $this.addClass('durarara')
       .text(katakanaName)
