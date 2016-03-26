@@ -1,5 +1,5 @@
 var romaji2katakana = (function() {
-  // based in http://d.hatena.ne.jp/mohayonao/20091129/1259505966
+  // based on http://d.hatena.ne.jp/mohayonao/20091129/1259505966
   var romaji_dict = {
     'a':  'ア', 'i':  'イ', 'u':  'ウ', 'e':  'エ', 'o':  'オ',
     'ka': 'カ', 'ki': 'キ', 'ku': 'ク', 'ke': 'ケ', 'ko': 'コ',
