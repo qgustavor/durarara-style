@@ -134,11 +134,11 @@ var romaji2katakana = (function() {
     content: attr(data-user);
     position: absolute;
     top: 44px;
-    left: 0.4em;
+    left: 0;
     overflow: hidden;
     height: 1.5em;
     text-align: center;
-    width: 7.5em;
+    width: 8.2em;
     color: white;
     font-size: 0.7em;
     background: black;
