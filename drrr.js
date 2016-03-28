@@ -1,5 +1,5 @@
 var romaji2katakana = (function() {
-  // based on http://d.hatena.ne.jp/mohayonao/20091129/1259505966
+  // based in http://d.hatena.ne.jp/mohayonao/20091129/1259505966
   var romaji_dict = {
     'a':  'ア', 'i':  'イ', 'u':  'ウ', 'e':  'エ', 'o':  'オ',
     'ka': 'カ', 'ki': 'キ', 'ku': 'ク', 'ke': 'ケ', 'ko': 'コ',
@@ -130,24 +130,6 @@ var romaji2katakana = (function() {
     color: white;
     font-size: 0.8em;
   }
-  .message::after {
-    content: attr(data-user);
-    position: absolute;
-    top: 44px;
-    left: 0;
-    overflow: hidden;
-    height: 1.5em;
-    text-align: center;
-    width: 8.2em;
-    color: white;
-    font-size: 0.7em;
-    background: black;
-    opacity: 0;
-    pointer-events: none;
-  }
-  .message:hover::after {
-    opacity: 1;
-  }
   .message:not(.message_me-command) > .content {
     border: 2px solid white;
     border-radius: 0.5em;
@@ -179,6 +161,12 @@ var romaji2katakana = (function() {
   }
   .message-controls a, .message-container a {
     color: white;
+  }
+  .content a {
+    text-decoration: underline;
+  }
+  .content a:hover, .content a:focus {
+    text-decoration: none;
   }
   .message .timestamp > .glyphicon {
     color: #F32121;
@@ -245,18 +233,16 @@ var romaji2katakana = (function() {
   $('.dropup').removeClass('dropup');
 
   function changeNames() {
-    $('.username a').not('.durarara').each(function() {
+    $('.username').not('.durarara').each(function() {
       var $this = $(this);
       var katakanaName = romaji2katakana($this.text());
       var hue = Math.abs(adler32(katakanaName)) % 640;
       var gradient = 'linear-gradient(0deg, hsla(0, 0%, 0%, 0.1), hsla(0, 0%, 0%, 0.2) 50%, hsla(0, 0%, 100%, 0.2) 50%, hsla(0, 0%, 100%, 0.1)), hsla(' +
         ((hue % 320 + 80) % 360) + ', ' + (hue > 320 ? 100 : 75) + '%, 50%, 0.8)';
       
-      $this = $this.addClass('durarara')
-      .text(katakanaName)
-      .parent();
-      
-      $this.prevAll('.avatar')
+      $this
+      .addClass('durarara')
+      .prevAll('.avatar')
       .children('a')
       .css('background', 'url("data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" style="fill:white;font-size:30px" dominant-baseline="central" text-anchor="middle">' + katakanaName.charAt(0) + '</text></svg>') + '"), ' + gradient);
       
