@@ -181,6 +181,11 @@ var romaji2katakana = (function() {
     position: static;
     height: auto;
   }
+  .message_me-command .username::before {
+    content: '>>';
+    letter-spacing: -0.2em;
+    margin-right: 1em;
+  }
   .message_me-command .username a {
     font-size: 1em;
   }
