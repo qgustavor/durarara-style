@@ -1,4 +1,4 @@
-(function() {;
+(function() {
   if (!Object.keys) return;
 
   var demissed = false;
