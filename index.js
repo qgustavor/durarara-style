@@ -7,7 +7,7 @@
     keep: true
   }, function() {
     if (demissed) return;
-    console.log('ok');
+    $.getScript('https://cdn.rawgit.com/qgustavor/c7ae6ddb51243e8061e3/raw/a579c9f63dc65a1169652ff6daf2e6737fade722/drrr.js');
   });
 
   var interval = setTimeout(function() {
