@@ -68,7 +68,9 @@ var romaji2katakana = (function() {
   };
   
   var romaji_keys = Object.keys(romaji_dict);
-  romaji_keys.sort((a, b) => b.length - a.length);
+  romaji_keys.sort(function(a, b) {
+    return b.length - a.length;
+  });
   
   var re_roma2kana = new RegExp(romaji_keys.join('|'), 'g');
   var rx_mba = /m(b|p)([aiueo])/g;
@@ -83,14 +85,17 @@ var romaji2katakana = (function() {
       .replace(rx_xtu, 'ッ$1')
       .replace(rx_a__, '$1ー')
       .replace(rx_b__, '')
-      .replace(re_roma2kana, a => romaji_dict[a]);
+      .replace(re_roma2kana, function (a) {
+        return romaji_dict[a];
+      });
   }
   
   return romaji2katakana;
 }());
 
 (function () {
-  $('<style>').html(`body {
+  $('<style>').html((function(){/*
+  body {
     background: black;
   }
   .message-container {
@@ -233,7 +238,8 @@ var romaji2katakana = (function() {
   .carregar-mensagens{
     background: black;
     color: white;
-  }`).appendTo('head');
+  }*/}).toString().replace(/^[^\/]+\/\*!?/, '').replace(/\*\/[^\/]+$/, ''))
+  .appendTo('head');
 
   $('.dropup').removeClass('dropup');
 
@@ -249,7 +255,9 @@ var romaji2katakana = (function() {
       .addClass('durarara')
       .prevAll('.avatar')
       .children('a')
-      .css('background', 'url("data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" style="fill:white;font-size:30px" dominant-baseline="central" text-anchor="middle">' + katakanaName.charAt(0) + '</text></svg>') + '"), ' + gradient);
+      .css('background', 'url("data:image/svg+xml;charset=utf-8,' +
+        encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" style="fill:white;font-size:30px" dominant-baseline="central" text-anchor="middle">' +
+        katakanaName.charAt(0) + '</text></svg>') + '"), ' + gradient);
       
       if (!$this.parent().hasClass('message_me-command')) {
         $this.next().css('background', gradient);
