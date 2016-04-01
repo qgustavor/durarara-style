@@ -13,7 +13,7 @@
   var interval = setTimeout(function() {
     demissed = true;
     msg.remove();
-  }, 15e3);
+  }, 60e3);
 
   $('<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>')
     .appendTo(msg.element.addClass('alert-dismissible'))
